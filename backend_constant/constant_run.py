@@ -353,6 +353,7 @@ def load_video_data_from_mysql():
             LEFT JOIN likes l ON v.video_id = l.video_id
             LEFT JOIN comments c ON v.video_id = c.video_id
             LEFT JOIN user_video_interactions i ON v.video_id = i.video_id AND i.interaction_type = 'view'
+            WHERE v.moderation_status != 'rejected'
             GROUP BY v.video_id, v.user_id, v.title, v.category
         """
         

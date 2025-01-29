@@ -213,14 +213,36 @@ const ContentModeration: React.FC<ContentModerationProps> = ({ type }) => {
                       <span className="text-sm text-gray-400">•</span>
                       <span className="text-sm text-gray-400">{format(new Date(comment.created_at), 'MMM d, yyyy')}</span>
                     </div>
-                    {mainLabelInfo && (
-                      <div className={`px-2 py-0.5 text-xs font-medium text-white rounded ${mainLabelInfo.color}`}>
-                        {mainLabelInfo.label} ({mainViolation.percentage}%)
-                      </div>
-                    )}
                   </div>
                   
                   <p className="text-gray-100 mb-2">{comment.content}</p>
+                  
+                  {/* Moderation Labels */}
+                  <div className="mb-3">
+                    <div className="grid grid-cols-2 gap-2">
+                      {allLabels.map(({ key, percentage, isMain }) => {
+                        const labelInfo = LABEL_INFO[key];
+                        if (!labelInfo) return null;
+                        
+                        return (
+                          <div 
+                            key={key}
+                            className={`flex items-center justify-between px-3 py-1.5 rounded ${
+                              isMain ? labelInfo.color : 'bg-gray-700'
+                            }`}
+                          >
+                            <div className="flex items-center">
+                              <span className="text-sm font-medium text-white">{labelInfo.label}</span>
+                              <span className="ml-2 text-xs text-gray-200">
+                                ({labelInfo.description})
+                              </span>
+                            </div>
+                            <span className="text-sm font-bold text-white">{percentage}%</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                   
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4 text-sm text-gray-400">

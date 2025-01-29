@@ -9,6 +9,7 @@
 /testing/.venv
 /testing/__pycache__
 
+/backend/model
 /backend/.venv
 /backend/__pycache__
 
