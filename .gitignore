@@ -1,0 +1,34 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/download
+
+/node_modules
+/admin/node_modules
+
+/testing/.venv
+/testing/__pycache__
+
+/backend/.venv
+/backend/__pycache__
+
+/backend_constant/.venv
+/backend_constant/__pycache__
+
+# production
+/build
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env
+
+# typescript
+*.tsbuildinfo
+
+#other
+.cursorignore
